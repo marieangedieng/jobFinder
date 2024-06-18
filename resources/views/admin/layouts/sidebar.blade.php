@@ -42,10 +42,10 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="{{ route('admin.dashboard') }}">JOBLIST</a>
+            <a href="{{ route('admin.dashboard') }}">JOBFINDER</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="{{ route('admin.dashboard') }}">JBL</a>
+            <a href="{{ route('admin.dashboard') }}">JF</a>
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
