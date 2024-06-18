@@ -2,8 +2,8 @@
     <div class="container">
       <div class="main-header">
         <div class="header-left">
-            <div class="header-title">
-                <a class='d-flex' href='{{ url('/') }}' style="color:#012A4A; font-family: 'Times New Roman',system-ui; font-size: 40px; font-weight: bolder">
+            <div class="header-logo">
+                <a class='d-flex' href='{{ url('/') }}'>
                     <img alt="jobFinder" src="{{ asset('frontend/assets/imgs/page/homepage1/headerLogoDark.png')}}" >
                 </a>
             </div>
