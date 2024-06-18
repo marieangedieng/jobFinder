@@ -4,7 +4,7 @@
         <div class="header-left">
             <div class="header-title">
                 <a class='d-flex' href='{{ url('/') }}' style="color:#012A4A; font-family: 'Times New Roman',system-ui; font-size: 40px; font-weight: bolder">
-                    <img alt="jobFinder" src="{{ asset('frontend/assets/imgs/page/homepage1/headerLogoDark.png')}}">
+                    <img alt="jobFinder" src="{{ asset('frontend/assets/imgs/page/homepage1/headerLogoDark.png')}}" >
                 </a>
             </div>
         </div>
@@ -64,7 +64,11 @@
     <div class="mobile-header-wrapper-inner">
       <div class="mobile-header-content-area">
         <div class="perfect-scroll">
-
+          <div class="mobile-search mobile-header-border mb-30">
+            <form action="#">
+              <input type="text" placeholder="Search…"><i class="fi-rr-search"></i>
+            </form>
+          </div>
           <div class="mobile-menu-wrap mobile-header-border">
             <!-- mobile menu start-->
             <nav>
@@ -131,7 +135,7 @@
               <li><a href="page-signin.html">Sign Out</a></li>
             </ul>
           </div>
-          <div class="site-copyright">Copyright 2022 &copy; jobfinder. <br>Designed by MarieAngeDieng.</div>
+          <div class="site-copyright">Copyright 2022 &copy; joblist. <br>Designed by AliThemes.</div>
         </div>
       </div>
     </div>
@@ -141,7 +145,11 @@
     <div class="mobile-header-wrapper-inner">
       <div class="mobile-header-content-area">
         <div class="perfect-scroll">
-          
+          <div class="mobile-search mobile-header-border mb-30">
+            <form action="#">
+              <input type="text" placeholder="Search…"><i class="fi-rr-search"></i>
+            </form>
+          </div>
           <div class="mobile-menu-wrap mobile-header-border">
             <!-- mobile menu start-->
             <nav>
