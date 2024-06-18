@@ -64,6 +64,13 @@
     <div class="mobile-header-wrapper-inner">
       <div class="mobile-header-content-area">
         <div class="perfect-scroll">
+          <div class="mobile-search mobile-header-border mb-10">
+              <div class="header-title">
+                  <a class='d-flex' href='{{ url('/') }}' style="color:#012A4A; font-family: 'Times New Roman',system-ui; font-size: 40px; font-weight: bolder">
+                      <img alt="jobFinder" src="{{ asset('frontend/assets/imgs/page/homepage1/headerLogoDark.png')}}" >
+                  </a>
+              </div>
+          </div>
           <div class="mobile-menu-wrap mobile-header-border">
             <!-- mobile menu start-->
             <nav>
