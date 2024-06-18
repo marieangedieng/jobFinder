@@ -64,7 +64,7 @@
     <div class="mobile-header-wrapper-inner">
       <div class="mobile-header-content-area">
         <div class="perfect-scroll">
-          <div class="mobile-menu-wrap mobile-header-border">
+          <div class="mobile-menu-wrap mobile-header-border mb-40">
             <!-- mobile menu start-->
             <nav>
                   @php
