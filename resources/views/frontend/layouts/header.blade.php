@@ -64,10 +64,8 @@
     <div class="mobile-header-wrapper-inner">
       <div class="mobile-header-content-area">
         <div class="perfect-scroll">
-          <div class="mobile-header-logo mobile-header-border mb-20">
-                  <a class='d-flex' href='{{ url('/') }}' >
-                      <img alt="jobFinder" src="{{ asset('frontend/assets/imgs/page/homepage1/headerLogoDark.png')}}" >
-                  </a>
+          <div class="mobile-header-title mobile-header-border mb-20">
+                  <p style="text-align: center">Menu</p>
           </div>
           <div class="mobile-menu-wrap mobile-header-border">
             <!-- mobile menu start-->
