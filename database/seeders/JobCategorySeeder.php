@@ -47,10 +47,8 @@ class JobCategorySeeder extends Seeder
         );
 
         foreach ($top_job_categories as $item) {
-            $create = new JobCategory();
-            $create->icon = 'fas fa-dot-circle';
-            $create->name = $item;
-            $create->save();
+            $category = JobCategoryFactory::create($item);
+            $category->save();
         }
     }
 }

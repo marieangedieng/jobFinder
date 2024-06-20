@@ -54,15 +54,6 @@ class RegisteredUserController extends Controller
                 'email'=>$user->email,
             ]);
             event(new Registered($company));
-            /*
-            $plan=UserPlan::create([
-                'company_id' => $company->id,
-                'plan_id'=>1,
-                'job_limit'=>0,
-                'featured_job_limit'=>0,
-                'highlight_job_limit'=>0,
-                'profile_verified'=>1
-            ]);*/
         }
         elseif ($user->role === 'candidate'){
             $candidate=Candidate::create([
