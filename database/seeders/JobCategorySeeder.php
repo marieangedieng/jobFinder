@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\JobCategory;
+use App\Factories\jobCategoryFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
