@@ -58,7 +58,8 @@ class jobController extends Controller
         \Log::info('Entering create method');
         storePlanInformation();
         $userPlan = session('user_plan');
-        
+        \Log::info('User plan retrieved', ['user_plan' => $userPlan, 'type' => gettype($userPlan)]);
+
         if($userPlan->job_limit < 1) {
             Notify::errorNotification('You have reached your plan limit please upgrade your plan');
             return to_route('company.jobs.index');
@@ -74,6 +75,8 @@ class jobController extends Controller
         $jobTypes = JobType::all();
         $tags = Tag::all();
         $skills = Skill::all();
+        \Log::info('Data loaded for create view');
+        
         return view('frontend.company-dashboard.job.create', compact(
             'companies',
             'categories',

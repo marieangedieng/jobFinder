@@ -77,9 +77,9 @@ if(!function_exists('storePlanInformation')) {
     function storePlanInformation()
     {
         session()->forget('user_plan');
+        $userPlan = auth()->user()?->company?->userPlan;
         session([
-            'user_plan' => isset(auth()->user()?->company?->userPlan) ?
-                auth()->user()->company->userPlan : []
+            'user_plan' => $userPlan ?? (object) ['job_limit' => 0, 'featured_job_limit' => 0, 'highlight_job_limit' => 0]
         ]);
     }
 }
