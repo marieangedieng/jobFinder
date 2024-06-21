@@ -16,6 +16,19 @@ use Razorpay\Api\Api as RazorpayApi;
 class PaymentController extends Controller
 {
 
+    function getPlanStrategy($planLabel): PlanStrategyInterface {
+        switch($planLabel) {
+            case 'Noble':
+                return new NoblePlanStrategy();
+            case 'VIP':
+                return new VipPlanStrategy();
+            case 'Royalty':
+                return new RoyaltyPlanStrategy();
+            default:
+                throw new \Exception("Unknown plan label: $planLabel");
+        }
+    }
+
     function paymentSuccess() : View {
         return view('frontend.pages.payment-success');
     }
@@ -106,7 +119,13 @@ class PaymentController extends Controller
 
                 OrderService::storeOrder($capture['id'], 'payPal', $capture['amount']['value'], $capture['amount']['currency_code'], 'paid');
 
-                OrderService::setUserPlan();
+                // Extract the plan label from the session
+                $planLabel = Session::get('selected_plan')['label'];
+
+                // Update user plan based on the strategy
+                $user = auth()->user();
+                $strategy = $this->getPlanStrategy($planLabel);
+                $strategy->applyPlan($user);
 
                 Session::forget('selected_plan');
                 return redirect()->route('company.payment.success');
@@ -167,13 +186,16 @@ class PaymentController extends Controller
         if($response->payment_status === 'paid') {
             try {
                 OrderService::storeOrder($response->payment_intent, 'stripe', ($response->amount_total / 100), $response->currency, 'paid');
-
-                OrderService::setUserPlan();
+                $planLabel = Session::get('selected_plan')['label'];
+                $user = auth()->user();
+                $strategy = $this->getPlanStrategy($planLabel);
+                $strategy->applyPlan($user);
 
                 Session::forget('selected_plan');
                 return redirect()->route('company.payment.success');
             }catch(\Exception $e) {
                 logger( 'Payment ERROR >> '. $e);
+                return redirect()->route('company.payment.error')->withErrors(['error' => 'Something went wrong, please try again.']);
             }
         }else {
             redirect()->route('company.payment.error')->withErrors(['error' => 'Payment failed']);
@@ -209,7 +231,13 @@ class PaymentController extends Controller
                 if($response['status'] === 'captured') {
                     OrderService::storeOrder($response->id, 'razorpay', ($response->amount / 100), $response->currency, 'paid');
 
-                    OrderService::setUserPlan();
+                    // Extract the plan label from the session
+                    $planLabel = Session::get('selected_plan')['label'];
+
+                    // Update user plan based on the strategy
+                    $user = auth()->user();
+                    $strategy = $this->getPlanStrategy($planLabel);
+                    $strategy->applyPlan($user);
 
                     Session::forget('selected_plan');
                     return redirect()->route('company.payment.success');
@@ -220,6 +248,8 @@ class PaymentController extends Controller
                 logger($e);
                 redirect()->route('company.payment.error')->withErrors(['error' => $e->getMessage()]);
             }
+        }else {
+            return redirect()->route('company.payment.error')->withErrors(['error' => 'Payment ID not found']);
         }
     }
 
