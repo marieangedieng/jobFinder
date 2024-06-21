@@ -55,8 +55,10 @@ class jobController extends Controller
      */
     public function create() : View|RedirectResponse
     {
+        \Log::info('Entering create method');
         storePlanInformation();
         $userPlan = session('user_plan');
+        
         if($userPlan->job_limit < 1) {
             Notify::errorNotification('You have reached your plan limit please upgrade your plan');
             return to_route('company.jobs.index');
