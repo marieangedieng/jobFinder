@@ -26,6 +26,7 @@ use App\Services\Notify;
 use App\Traits\Searchable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class jobController extends Controller
@@ -96,12 +97,14 @@ class jobController extends Controller
      */
     public function store(JobCreateRequest $request) : RedirectResponse
     {
-        if(session('user_plan')->featured_job_limit < 1) {
-            Notify::errorNotification('You have reached your Featured job limit please upgrade your plan');
+        $userPlan = Auth::user()->company->userPlan;
+        if ($request->featured && $userPlan->featured_job_limit < 1) {
+            Notify::errorNotification('You have reached your Featured job limit, please upgrade your plan.');
             return redirect()->back();
         }
-        if(session('user_plan')->highlight_job_limit < 1) {
-            Notify::errorNotification('You have reached your Highlight job limit please upgrade your plan');
+
+        if ($request->highlight && $userPlan->highlight_job_limit < 1) {
+            Notify::errorNotification('You have reached your Highlight job limit, please upgrade your plan.');
             return redirect()->back();
         }
 

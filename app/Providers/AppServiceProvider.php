@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Job;
 use App\Models\User;
 use App\Models\UserPlan;
+use App\Observers\JobObserver;
 use App\Observers\UserObserver;
 use Gate;
 use Illuminate\Pagination\Paginator;
@@ -30,5 +32,6 @@ class AppServiceProvider extends ServiceProvider
             return $user->hasRole('Super Admin') ? true : null;
         });
         User::observe(UserObserver::class);
+        Job::observe(JobObserver::class);
     }
 }
