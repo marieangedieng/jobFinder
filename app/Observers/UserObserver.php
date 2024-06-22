@@ -6,7 +6,7 @@ use App\Models\Company;
 use App\Models\Candidate;
 use App\Models\Plan;
 use App\Models\UserPlan;
-
+use Illuminate\Auth\Events\Registered;
 class UserObserver {
     public function created(User $user) {
         if ($user->role === 'company') {
