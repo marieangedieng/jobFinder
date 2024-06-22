@@ -13,6 +13,11 @@
                 @include('frontend.candidate-dashboard.sidebar')
 
                 <div class="col-lg-9 col-md-8 col-sm-12 col-12 mb-50">
+                    @if(Session::has('hired_message'))
+                        <div class="alert alert-success">
+                            {{ Session::get('hired_message') }}
+                        </div>
+                    @endif
                     <div class="content-single">
                         <h3 class="mt-0 mb-0 color-brand-1">My Space</h3>
                         <div class="dashboard_overview">

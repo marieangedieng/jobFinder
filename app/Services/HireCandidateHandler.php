@@ -20,9 +20,9 @@ class HireCandidateHandler
         ]);
 
         // Send notification to the candidate
-        $candidate = User::find($command->candidateId);
         $job = Job::find($command->jobId);
 
-        Notification::send($candidate, new CandidateHired($job));
+        Session::put('hired_message', 'Congratulations! You have been hired for the position of ' . $job->title);
+
     }
 }
