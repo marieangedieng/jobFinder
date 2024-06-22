@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Commands\HireCandidateCommand;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\JobCreateRequest;
 use App\Models\AppliedJob;
@@ -22,6 +23,7 @@ use App\Models\SalaryType;
 use App\Models\Skill;
 use App\Models\State;
 use App\Models\Tag;
+use App\Services\HireCandidateHandler;
 use App\Services\Notify;
 use App\Traits\Searchable;
 use Illuminate\Http\RedirectResponse;
@@ -44,6 +46,15 @@ class jobController extends Controller
         return view('frontend.company-dashboard.job.index', compact('jobs'));
     }
 
+    public function hire($candidateId, $jobId)
+    {
+        $command = new HireCandidateCommand($candidateId, $jobId);
+        $handler = new HireCandidateHandler();
+        $handler->handle($command);
+
+        Notify::successNotification('Candidate has been successfully hired!');
+        return redirect()->back();
+    }
     function applications(string $id) : View {
         $applications = AppliedJob::where('job_id', $id)->paginate(20);
 

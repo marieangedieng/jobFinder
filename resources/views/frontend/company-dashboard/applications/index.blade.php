@@ -29,11 +29,10 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex">
-
-                                                <img  style="width: 50px; height: 50px;; object-fit:cover;" src="{{ asset($application->candidate?->image) }}" alt="">
+                                                <img style="width: 50px; height: 50px; object-fit:cover;" src="{{ asset($application->candidate?->image) }}" alt="">
                                                 <br>
                                                 <div style="margin-left: 10px">
-                                                    <span >{{ $application->candidate->full_name }}</span>
+                                                    <span>{{ $application->candidate->full_name }}</span>
                                                     <br>
                                                     <span>{{ $application->candidate->profession->name }}</span>
                                                 </div>
@@ -44,9 +43,10 @@
                                         </td>
                                         <td>
                                             <a href="{{ route('candidates.show', $application->candidate->slug) }}" class="btn btn-primary">View Profile</a>
+                                            <a href="{{ route('applications.hire', ['candidate_id' => $application->candidate->id, 'job_id' => $application->job_id]) }}" class="btn btn-success">Hire</a>
                                         </td>
-
                                     </tr>
+
                                 @empty
                                     <tr>
                                         <td colspan="3" class="text-center">No result found!</td>
