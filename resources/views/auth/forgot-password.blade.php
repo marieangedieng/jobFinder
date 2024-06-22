@@ -1,20 +1,9 @@
 @extends('frontend.layouts.master')
 @section('contents')
-<section class="section-box mt-75">
-    <div class="breacrumb-cover">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-12">
-            <h2 class="mb-20">Forgot Password</h2>
-            <ul class="breadcrumbs">
-              <li><a class="home-icon" href="{{ url('/') }}">Home</a></li>
-              <li>Forgot Password</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <section class="section-box mt-150">
+        <p style="font-size: 50px; font-weight: bold; text-align: center; color: black">Password Forgotten?</p>
+        <p style="text-align: center; color: black; margin-top: 20px">It's okay !</p>
+    </section>
 
   <section class="pt-120 login-register">
     <div class="container">
