@@ -141,7 +141,7 @@ Route::group(
     /** Job Routes */
     Route::get('applications/{id}', [JobController::class, 'applications'])->name('job.applications');
     Route::resource('jobs', JobController::class);
-    Route::get('/applications/hire/{candidate_id}/{job_id}', [JobController::class, 'hire'])->name('applications.hire');
+
         /**Payment Routes */
     Route::get('payment/success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
     Route::get('payment/error', [PaymentController::class, 'paymentError'])->name('payment.error');

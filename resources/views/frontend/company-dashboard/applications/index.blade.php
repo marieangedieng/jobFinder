@@ -43,7 +43,6 @@
                                         </td>
                                         <td>
                                             <a href="{{ route('candidates.show', $application->candidate->slug) }}" class="btn btn-primary">View Profile</a>
-                                            <a href="{{ route('applications.hire', ['candidate_id' => $application->candidate->id, 'job_id' => $application->job_id]) }}" class="btn btn-success">Hire</a>
                                         </td>
                                     </tr>
 

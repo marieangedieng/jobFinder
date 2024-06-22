@@ -46,15 +46,7 @@ class jobController extends Controller
         return view('frontend.company-dashboard.job.index', compact('jobs'));
     }
 
-    public function hire($candidateId, $jobId)
-    {
-        $command = new HireCandidateCommand($candidateId, $jobId);
-        $handler = new HireCandidateHandler();
-        $handler->handle($command);
-
-        Notify::successNotification('Candidate has been successfully hired!');
-        return redirect()->back();
-    }
+    
     function applications(string $id) : View {
         $applications = AppliedJob::where('job_id', $id)->paginate(20);
 
