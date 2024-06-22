@@ -20,7 +20,7 @@ class UserObserver {
             // Automatically link the "Noble" package to new companies
             $plan = Plan::where('label', 'Noble')->first();
             if ($plan) {
-                $userplan=UserPlan::create([
+                UserPlan::create([
                     'company_id' => $company->id,
                     'plan_id' => $plan->id,
                     'job_limit' => $plan->job_limit,
@@ -28,15 +28,13 @@ class UserObserver {
                     'highlight_job_limit' => $plan->highlight_job_limit,
                     'profile_verified' => $plan->profile_verified,
                 ]);
-                event(new Registered($userplan));
             }
         } elseif ($user->role === 'candidate') {
-            $candidate=Candidate::create([
+            Candidate::create([
                 'user_id' => $user->id,
                 'name' => $user->name,
                 'email' => $user->email,
             ]);
-            event(new Registered($candidate));
         }
     }
 }
