@@ -47,24 +47,6 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'role' => $request->account_type
         ]);
-        if($user->role === 'company'){
-            $company=Company::create([
-                'user_id' => $user->id,
-                'name'=>$user->name,
-                'email'=>$user->email,
-            ]);
-            event(new Registered($company));
-        }
-        elseif ($user->role === 'candidate'){
-            $candidate=Candidate::create([
-                'user_id' => $user->id,
-                'name'=>$user->name,
-                'email'=>$user->email,
-            ]);
-            event(new Registered($candidate));
-        }
-
-
         event(new Registered($user));
 
         Auth::login($user);

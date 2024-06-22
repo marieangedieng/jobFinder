@@ -33,6 +33,8 @@ class AuthenticatedSessionController extends Controller
             return redirect()->intended(RouteServiceProvider::COMPANY_DASHBOARD);
         }elseif($request->user()->role === 'candidate'){
             return redirect()->intended(RouteServiceProvider::CANDIDATE_DASHBOARD);
+        }else{
+            return redirect('/');
         }
     }
 
