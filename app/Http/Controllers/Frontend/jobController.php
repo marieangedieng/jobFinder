@@ -76,7 +76,7 @@ class jobController extends Controller
         $tags = Tag::all();
         $skills = Skill::all();
         \Log::info('Data loaded for create view');
-        
+
         return view('frontend.company-dashboard.job.create', compact(
             'companies',
             'categories',
