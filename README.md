@@ -56,7 +56,7 @@ Then:
 1.Clone the repository:
 
    ```bash
-    git clone https://github.com/yourusername/jobfinder.git
+    git clone https://github.com/marieangedieng/jobFinder.git
    ```
 
 2.Navigate to the project directory:
